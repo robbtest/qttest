@@ -59,15 +59,24 @@ QPushButton#UnlockedBtn:hover
 QPushButton#UnlockedBtn:pressed
 {
 	border-image: url(:/DemoPainter1/Resources/UnlockedBtn_P.png);
+}
+
+QPushButton#greenBtn
+{
+	background-color: rgb(85, 255, 0);
+}
+QPushButton#blueBtn
+{	
+	background-color: rgb(85, 0, 255);
 }</string>
   </property>
-  <widget class="CunstomWid" name="widget" native="true">
+  <widget class="CunstomWid" name="LineWid" native="true">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>100</y>
-     <width>320</width>
-     <height>180</height>
+     <x>20</x>
+     <y>70</y>
+     <width>761</width>
+     <height>511</height>
     </rect>
    </property>
   </widget>
@@ -157,6 +166,32 @@ QPushButton#UnlockedBtn:pressed
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="greenBtn">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>20</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="blueBtn">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>20</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

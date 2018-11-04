@@ -13,7 +13,7 @@ PointData::~PointData()
 
 PointData*	PointData::Instance()
 {
-	if (m_pSelf != nullptr)
+	if (m_pSelf == nullptr)
 	{
 		m_pSelf = new PointData();
 	}
@@ -30,23 +30,23 @@ void PointData::Uninstance()
 	}
 }
 
-int PointData::PushPoint(TWO_ARRAY_TYPE stlArrays)
+int PointData::PushPoint(ARRAY_TYPE stlArrays)
 {
 	// 涉及到多线程放数据 上锁
 	m_mapPointMutex.lock();
 	m_mapPoint[m_mapPoint.size()] = stlArrays;
-	int iSize = m_mapPoint.size();
+	int iSize = m_mapPoint.size()-1;
 	m_mapPointMutex.unlock();
 
 	return iSize;
 }
 
-TWO_ARRAY_TYPE PointData::PopPoint(int iIndex)
+ARRAY_TYPE PointData::PopPoint(int iIndex)
 {
 	// 涉及到多线程取数据 上锁
 	m_mapPointMutex.lock();
-	TWO_ARRAY_TYPE stlArrays = m_mapPoint[m_mapPoint.size()];
-	m_mapPoint.erase(m_mapPoint.size());
+	ARRAY_TYPE stlArrays = m_mapPoint[iIndex];
+	m_mapPoint.erase(iIndex);
 	m_mapPointMutex.unlock();
 
 	return stlArrays;

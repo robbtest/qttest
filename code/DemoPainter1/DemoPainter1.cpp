@@ -2,7 +2,8 @@
 #include <QPainter>
 #include <QImage>
 #include "CunstomWid.h"
-
+#include "PointData.h"
+#include <qt_windows.h>
 DemoPainter1::DemoPainter1(QWidget *parent)
 	: QWidget(parent)
 {
@@ -11,12 +12,25 @@ DemoPainter1::DemoPainter1(QWidget *parent)
 	ui.LockedBtn->installEventFilter(this);
 	ui.UnlockedBtn->installEventFilter(this);
 	ui.LockedBtn->setVisible(false);
+	ui.greenBtn->installEventFilter(this);
+	ui.blueBtn->installEventFilter(this);
 
 	QWidget* pWid = new QWidget(this);
 	pWid->move(660, 22);
 	pWid->setFixedHeight(18);
 	pWid->setStyleSheet("border:1px solid green");
-	
+
+	connect(this, &DemoPainter1::pointDataUpdate, ui.LineWid, &CunstomWid::updatLine);
+	m_dataGenerateThread = std::thread(&DemoPainter1::GenerateData, this);
+}
+
+DemoPainter1::~DemoPainter1()
+{
+	m_bStopThread = true;
+	if (m_dataGenerateThread.joinable())
+	{
+		m_dataGenerateThread.join();
+	}
 }
 
 bool DemoPainter1::eventFilter(QObject* pObj, QEvent* pEvent)
@@ -37,6 +51,20 @@ bool DemoPainter1::eventFilter(QObject* pObj, QEvent* pEvent)
 			ui.LockedBtn->setVisible(true);
 			ui.UnlockedBtn->setVisible(false);
 			ui.FourStateBtn->setEnabled(false);
+		}
+	}
+	else if (pObj == ui.greenBtn)
+	{
+		if (pEvent->type() == QEvent::MouseButtonPress)
+		{
+			ui.LineWid->setLine1Visible(!ui.LineWid->getLine1Visible());
+		}
+	}
+	else if (pObj == ui.blueBtn)
+	{
+		if (pEvent->type() == QEvent::MouseButtonPress)
+		{
+			ui.LineWid->setLine2Visible(!ui.LineWid->getLine2Visible());
 		}
 	}
 	return QWidget::eventFilter(pObj, pEvent);
@@ -65,3 +93,23 @@ void DemoPainter1::customEvent(QEvent *pEvent)
 	}
 }
 
+void DemoPainter1::ExecGenerateData()
+{
+	while (!m_bStopThread)
+	{
+		ARRAY_TYPE cAarray;
+		for (int i = 0; i < 2; i++)
+		{
+			cAarray.push_back(std::rand() % 100);
+		}
+		Q_SIGNAL(pointDataUpdate(PointData::Instance()->PushPoint(cAarray)));
+		Sleep(500);
+	}
+}
+
+void DemoPainter1::GenerateData(void* pParam)
+{
+	DemoPainter1* pDemoPainter1 = static_cast<DemoPainter1*>(pParam);
+	
+	pDemoPainter1->ExecGenerateData();
+}
