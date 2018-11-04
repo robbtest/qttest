@@ -58,6 +58,9 @@
     <ClCompile Include="CunstomWid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PointData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="DemoPainter1.h">
@@ -75,6 +78,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="CunstomWid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PointData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
