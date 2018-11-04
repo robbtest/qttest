@@ -1,25 +1,175 @@
-<UI version="4.0" >
- <class>DemoPainter1Class</class>
- <widget class="QWidget" name="DemoPainter1Class" >
-  <property name="objectName" >
-   <string notr="true">DemoPainter1Class</string>
-  </property>
-  <property name="geometry" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DemoPainter1Wid</class>
+ <widget class="QWidget" name="DemoPainter1Wid">
+  <property name="geometry">
    <rect>
-	<x>0</x>
-	<y>0</y>
-	<width>600</width>
-	<height>400</height>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>DemoPainter1</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#DemoPainter1Wid
+{
+	background-color: rgb(158, 136, 140);
+}
+QPushButton#FourStateBtn
+{
+	border-image: url(:/DemoPainter1/Resources/FourStateBtn_N.png);
+}
+QPushButton#FourStateBtn:hover
+{
+	border-image: url(:/DemoPainter1/Resources/FourStateBtn_H.png);
+}
+QPushButton#FourStateBtn:pressed
+{
+	border-image: url(:/DemoPainter1/Resources/FourStateBtn_P.png);
+}
+QPushButton#FourStateBtn:disabled
+{
+	border-image: url(:/DemoPainter1/Resources/FourStateBtn_D.png);
+}
+
+QPushButton#LockedBtn
+{
+	border-image: url(:/DemoPainter1/Resources/LockedBtn_N.png);
+}
+QPushButton#LockedBtn:hover
+{
+	border-image: url(:/DemoPainter1/Resources/LockedBtn_H.png);
+}
+QPushButton#LockedBtn:pressed
+{
+	border-image: url(:/DemoPainter1/Resources/LockedBtn_P.png);
+}
+
+QPushButton#UnlockedBtn
+{
+	border-image: url(:/DemoPainter1/Resources/UnlockedBtn_N.png);
+}
+QPushButton#UnlockedBtn:hover
+{
+	border-image: url(:/DemoPainter1/Resources/UnlockedBtn_H.png);
+}
+QPushButton#UnlockedBtn:pressed
+{
+	border-image: url(:/DemoPainter1/Resources/UnlockedBtn_P.png);
+}</string>
+  </property>
+  <widget class="CunstomWid" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>100</y>
+     <width>320</width>
+     <height>180</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>102</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="HLayout1">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="sizeConstraint">
+     <enum>QLayout::SetMinimumSize</enum>
+    </property>
+    <item>
+     <widget class="QPushButton" name="FourStateBtn">
+      <property name="minimumSize">
+       <size>
+        <width>40</width>
+        <height>18</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>40</width>
+        <height>18</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="LockedBtn">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>18</width>
+        <height>18</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>18</width>
+        <height>18</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="UnlockedBtn">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>18</width>
+        <height>18</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>18</width>
+        <height>18</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>CunstomWid</class>
+   <extends>QWidget</extends>
+   <header>cunstomwid.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
-   <include location="DemoPainter1.qrc"/>
+  <include location="DemoPainter1.qrc"/>
  </resources>
  <connections/>
-</UI>
+</ui>

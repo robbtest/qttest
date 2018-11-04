@@ -1,4 +1,16 @@
 <RCC>
-    <qresource prefix="DemoPainter1">
+    <qresource prefix="/DemoPainter1">
+        <file>Resources/11.png</file>
+        <file>Resources/FourStateBtn_D.png</file>
+        <file>Resources/FourStateBtn_H.png</file>
+        <file>Resources/FourStateBtn_N.png</file>
+        <file>Resources/FourStateBtn_P.png</file>
+        <file>Resources/UnlockedBtn_H.png</file>
+        <file>Resources/UnlockedBtn_N.png</file>
+        <file>Resources/UnlockedBtn_P.png</file>
+        <file>Resources/LockedBtn_H.png</file>
+        <file>Resources/LockedBtn_N.png</file>
+        <file>Resources/LockedBtn_P.png</file>
+        <file>Resources/22.png</file>
     </qresource>
 </RCC>
