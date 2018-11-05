@@ -11,7 +11,7 @@ DemoPainter1::DemoPainter1(QWidget *parent)
 
 	ui.LockedBtn->installEventFilter(this);
 	ui.UnlockedBtn->installEventFilter(this);
-	ui.LockedBtn->setVisible(false);
+	ui.LockedBtn->setVisible(true);
 	ui.greenBtn->installEventFilter(this);
 	ui.blueBtn->installEventFilter(this);
 
