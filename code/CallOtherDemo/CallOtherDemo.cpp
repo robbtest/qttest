@@ -9,15 +9,18 @@ CallOtherDemo::CallOtherDemo(QWidget *parent)
 
 	ui.CallDemoWid->installEventFilter(this);
 }
-
+#include <tchar.h>
 bool CallOtherDemo::eventFilter(QObject* pObj, QEvent* pEvent)
 {
 	if (pObj == ui.CallDemoWid)
 	{
 		if (pEvent->type() == QEvent::MouseButtonRelease)
 		{
-			//::ShellExecute(winId(),"DemoPainter1.exe",);
-			::ShellExecute(NULL, L"open", L"DemoPainter1.exe", L"", NULL, SW_SHOW);
+			char szFileName[512] = { 0 };
+			::GetModuleFileNameA(NULL, szFileName, MAX_PATH);
+			*strrchr(szFileName, '\\') = '\0';
+			strcat(szFileName, "\\PainterDemo.exe");
+			::ShellExecuteA(NULL, "open", szFileName, "", NULL, SW_SHOW);
 		}
 	}
 	return QWidget::eventFilter(pObj, pEvent);
