@@ -3,14 +3,37 @@
 #include <QImage>
 #include <QEvent>
 #include <QApplication>
-
-
+#include <QMouseEvent>
+#include <QAction>
 
 CunstomWid::CunstomWid(QWidget* pParent)
 	: QWidget(pParent)
 {
 	m_arrLine1.reserve(21);
 	m_arrLine2.reserve(21);
+
+	//QMenu fileMenu = new QMenu(tr("File"), this);
+	QAction* RedAction  = new QAction("&Green Line", this);
+	QAction* BlueAction = new QAction("&Blue Line", this);
+
+	RedAction->setCheckable(true);
+	BlueAction->setCheckable(true);
+
+	RedAction->setShortcut(QKeySequence(tr("Ctrl+D")));
+
+	connect(RedAction, &QAction::triggered, this, &CunstomWid::setLine1Visible);
+	connect(BlueAction, &QAction::triggered, this, &CunstomWid::setLine2Visible);
+
+#if 0
+	addAction(RedAction);
+	addAction(BlueAction);
+	setContextMenuPolicy(Qt::ActionsContextMenu);
+#else
+	//setContextMenuPolicy(Qt::DefaultContextMenu);
+	m_pMenu = new QMenu(this);
+	m_pMenu->addAction(RedAction);
+	m_pMenu->addAction(BlueAction);
+#endif
 }
 
 
@@ -114,11 +137,21 @@ void CunstomWid::paintEvent(QPaintEvent *event)
 
 void CunstomWid::mousePressEvent(QMouseEvent *event)
 {
-	m_bBackground = !m_bBackground;
-	update();
+	if (event->buttons() == Qt::LeftButton)
+	{
+		m_bBackground = !m_bBackground;
+		update();
 
-	QEvent* pEvent = new QEvent(static_cast<QEvent::Type>(EVENT_SERIAL_SEND));
-	QApplication::postEvent(parentWidget(), pEvent);
+		QEvent* pEvent = new QEvent(static_cast<QEvent::Type>(EVENT_SERIAL_SEND));
+		QApplication::postEvent(parentWidget(), pEvent);
+	}
+	else if (event->buttons() == Qt::RightButton)
+	{
+		//m_pMenu->move(mapToGlobal(event->pos()));
+		m_pMenu->move(event->globalPos());
+		m_pMenu->exec();
+	}
+
 
 	QWidget::mousePressEvent(event);
 }

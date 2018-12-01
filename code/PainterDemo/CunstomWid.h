@@ -2,6 +2,7 @@
 
 #include <QWidget>
 #include <QEvent>
+#include <QMenu>
 #include "PointData.h"
 
 #define EVENT_SERIAL_SEND	QEvent::Type::User + 1
@@ -31,5 +32,6 @@ private:
 	ARRAY_TYPE  m_arrLine2;							// 线二
 	bool		m_bLine1 = true;					// 绘制线一标志
 	bool		m_bLine2 = true;					// 绘制线二标志
+	QMenu*		m_pMenu  = nullptr;					// 菜单
 };
 
