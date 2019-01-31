@@ -83,6 +83,7 @@ void CallOtherDemo::StartThread()
 			m_thread.join();
 		}
 		m_thread = std::thread(&CallOtherDemo::ThreadFuncProc, this);
+		//std::thread m_thread(&CallOtherDemo::ThreadFuncProc, this);	//线程已经定义,这里会重复定义
 	}
 }
 

@@ -4,6 +4,8 @@
 #include "CunstomWid.h"
 #include "PointData.h"
 #include <qt_windows.h>
+#include <QDebug>
+
 DemoPainter1::DemoPainter1(QWidget *parent)
 	: QWidget(parent)
 {
@@ -19,6 +21,8 @@ DemoPainter1::DemoPainter1(QWidget *parent)
 	pWid->move(660, 22);
 	pWid->setFixedHeight(18);
 	pWid->setStyleSheet("border:1px solid green");
+
+	qDebug() << "pWid addr is" << pWid;
 
 	connect(this, &DemoPainter1::pointDataUpdate, ui.LineWid, &CunstomWid::updatLine);
 	m_dataGenerateThread = std::thread(&DemoPainter1::GenerateData, this);
@@ -102,8 +106,14 @@ void DemoPainter1::ExecGenerateData()
 		{
 			cAarray.push_back(std::rand() % 100);
 		}
+
+		for (auto i : cAarray)
+		{   //auto i: ±éÀú
+		    qDebug() << i;
+		}
+		
 		Q_SIGNAL(pointDataUpdate(PointData::Instance()->PushPoint(cAarray)));
-		Sleep(500);
+		Sleep(2000);
 	}
 }
 

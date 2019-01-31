@@ -1,4 +1,5 @@
 #include "PointData.h"
+#include <QDebug>
 
 PointData* PointData::m_pSelf = nullptr;
 
@@ -16,6 +17,7 @@ PointData*	PointData::Instance()
 	if (m_pSelf == nullptr)
 	{
 		m_pSelf = new PointData();
+		qDebug() <<"m_pSelf addr is"<< m_pSelf;
 	}
 
 	return m_pSelf;

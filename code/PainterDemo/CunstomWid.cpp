@@ -5,6 +5,7 @@
 #include <QApplication>
 #include <QMouseEvent>
 #include <QAction>
+#include <QDebug>
 
 CunstomWid::CunstomWid(QWidget* pParent)
 	: QWidget(pParent)
@@ -15,6 +16,8 @@ CunstomWid::CunstomWid(QWidget* pParent)
 	//QMenu fileMenu = new QMenu(tr("File"), this);
 	QAction* RedAction  = new QAction("&Green Line", this);
 	QAction* BlueAction = new QAction("&Blue Line", this);
+	qDebug() << "RedAction addr is" << RedAction;
+	qDebug() << "BlueAction addr is" << BlueAction;
 
 	RedAction->setCheckable(true);
 	BlueAction->setCheckable(true);
@@ -33,12 +36,14 @@ CunstomWid::CunstomWid(QWidget* pParent)
 	m_pMenu = new QMenu(this);
 	m_pMenu->addAction(RedAction);
 	m_pMenu->addAction(BlueAction);
+	qDebug() << "m_pMenu addr is" << m_pMenu;
 #endif
 }
 
 
 CunstomWid::~CunstomWid()
 {
+	PointData::Uninstance();
 }
 
 void CunstomWid::setLine1Visible(bool bVisible)
@@ -143,6 +148,7 @@ void CunstomWid::mousePressEvent(QMouseEvent *event)
 		update();
 
 		QEvent* pEvent = new QEvent(static_cast<QEvent::Type>(EVENT_SERIAL_SEND));
+		qDebug() << "pEvent addr is" << pEvent;
 		QApplication::postEvent(parentWidget(), pEvent);
 	}
 	else if (event->buttons() == Qt::RightButton)
