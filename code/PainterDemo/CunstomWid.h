@@ -6,8 +6,9 @@
 #include "PointData.h"
 
 #define EVENT_SERIAL_SEND	QEvent::Type::User + 1
+//static const QEvent::Type SerialSend = (QEvent::Type)QEvent::registerEventType(QEvent::Type::User + 1);
 
-// ×Ô¶¨ÒåWidgetÀà
+// è‡ªå®šä¹‰Widgetç±»
 class CunstomWid : public QWidget
 {
 public:
@@ -27,11 +28,11 @@ protected:
 	void mousePressEvent(QMouseEvent *event);
 
 private:
-	bool		m_bBackground = false;				// ±³¾°Í¼ÇĞ»»±êÖ¾
-	ARRAY_TYPE	m_arrLine1;							// ÏßÒ»
-	ARRAY_TYPE  m_arrLine2;							// Ïß¶ş
-	bool		m_bLine1 = true;					// »æÖÆÏßÒ»±êÖ¾
-	bool		m_bLine2 = true;					// »æÖÆÏß¶ş±êÖ¾
-	QMenu*		m_pMenu  = nullptr;					// ²Ëµ¥
+	bool		m_bBackground = false;				// èƒŒæ™¯å›¾åˆ‡æ¢æ ‡å¿—
+	ARRAY_TYPE	m_arrLine1;							// çº¿ä¸€
+	ARRAY_TYPE  m_arrLine2;							// çº¿äºŒ
+	bool		m_bLine1 = true;					// ç»˜åˆ¶çº¿ä¸€æ ‡å¿—
+	bool		m_bLine2 = true;					// ç»˜åˆ¶çº¿äºŒæ ‡å¿—
+	QMenu*		m_pMenu  = nullptr;					// èœå•
 };
 
