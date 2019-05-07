@@ -9,7 +9,7 @@ QStyledItemDelegate - Inherit
  - sizeHint
  
 QStandardItemModel
- - appendRow  
+ - appendRow 
 QStandardItem
  - setData
  
