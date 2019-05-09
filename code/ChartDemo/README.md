@@ -18,9 +18,9 @@ QChart
 坐标 横轴和纵轴  
 QCategoryAxis
 
-图表  
-QLineSeries    折线图
-QBarSeries     柱状图
-QAreaSeries    区域图
-QPieSeries     饼图
-QSplineSeries  曲线图
+图表（QAbstractSeries）  
+QLineSeries    折线图  
+QBarSeries     柱状图  
+QAreaSeries    区域图  
+QPieSeries     饼图  
+QSplineSeries  曲线图  
