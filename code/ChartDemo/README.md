@@ -6,12 +6,12 @@ QChartView
 
 图表和坐标系  
 QChart
- - addSeries
- - setTitle
+ - addSeries                添加图表
+ - setTitle                 设置标题
  - setAnimationOptions
- - createDefaultAxes
- - setAxisX
- - setAxisY
+ - createDefaultAxes        默认创建坐标轴
+ - setAxisX                 将外部创建坐标轴设置为横轴
+ - setAxisY                 将外部创建坐标轴设置为纵轴
  - legend
  - axisX
 
@@ -19,6 +19,8 @@ QChart
 QCategoryAxis
 
 图表  
-QLineSeries
-QBarSeries
-QAreaSeries
+QLineSeries    折线图
+QBarSeries     柱状图
+QAreaSeries    区域图
+QPieSeries     饼图
+QSplineSeries  曲线图
