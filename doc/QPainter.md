@@ -4,3 +4,5 @@ public function
 * drawRects   使用设置画刷绘制多个矩形
 * drawText    指定位置绘制文本
 * fillRect    使用QBrush或QColor填充矩形
+* setBrush    设置画刷
+* setPen      设置画笔
