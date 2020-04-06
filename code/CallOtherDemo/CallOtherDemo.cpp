@@ -1,10 +1,13 @@
 #include "CallOtherDemo.h"
 
-#include <qt_windows.h>
 #include <QDebug>
 #include <QTime>
 #include <QThread>
 #include <QScrollBar>
+
+#ifdef WIN32
+#include <qt_windows.h>
+#endif
 
 CallOtherDemo::CallOtherDemo(QWidget *parent)
 	: QWidget(parent)
@@ -32,11 +35,13 @@ bool CallOtherDemo::eventFilter(QObject* pObj, QEvent* pEvent)
 	{
 		if (pEvent->type() == QEvent::MouseButtonRelease)
 		{
+#if WIN32
 			char szFileName[512] = { 0 };
 			::GetModuleFileNameA(NULL, szFileName, MAX_PATH);
 			*strrchr(szFileName, '\\') = '\0';
 			strcat(szFileName, "\\PainterDemo.exe");
 			::ShellExecuteA(NULL, "open", szFileName, "", NULL, SW_SHOW);
+#endif
 		}
 	}
 	return QWidget::eventFilter(pObj, pEvent);

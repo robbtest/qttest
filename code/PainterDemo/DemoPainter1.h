@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef _DEMOPAINTER1_H_
+#define _DEMOPAINTER1_H_
+
 #include <QtWidgets/QWidget>
 #include "ui_DemoPainter1.h"
 #include <thread>
@@ -31,3 +34,5 @@ private:
 	bool				m_bStopThread		= false;	// 停止线程标志
 	std::thread			m_dataGenerateThread;			// 数据生成线程		
 };
+
+#endif // _DEMOPAINTER1_H_

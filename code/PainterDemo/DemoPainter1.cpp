@@ -1,9 +1,9 @@
 #include "DemoPainter1.h"
-#include <QPainter>
-#include <QImage>
 #include "CunstomWid.h"
 #include "PointData.h"
-#include <qt_windows.h>
+
+#include <QPainter>
+#include <QImage>
 #include <QDebug>
 
 DemoPainter1::DemoPainter1(QWidget *parent)
@@ -112,8 +112,8 @@ void DemoPainter1::ExecGenerateData()
 		    qDebug() << i;
 		}
 		
-		Q_SIGNAL(pointDataUpdate(PointData::Instance()->PushPoint(cAarray)));
-		Sleep(2000);
+        //Q_SIGNAL(pointDataUpdate(PointData::Instance()->PushPoint(cAarray)));
+        //Sleep(2000);
 	}
 }
 

@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef _CUNSTOMWID_H_
+#define _CUNSTOMWID_H_
+
 #include <QWidget>
 #include <QEvent>
 #include <QMenu>
@@ -36,3 +39,4 @@ private:
 	QMenu*		m_pMenu  = nullptr;					// 菜单
 };
 
+#endif // _CUNSTOMWID_H_
